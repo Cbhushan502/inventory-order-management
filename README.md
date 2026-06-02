@@ -1,73 +1,93 @@
 # Inventory & Order Management System
 
-## Overview
-
-A full-stack Inventory & Order Management System built using FastAPI, React, PostgreSQL, Docker, and Docker Compose.
-
-The application allows businesses to:
-
-* Manage Products
-* Manage Customers
-* Create and Track Orders
-* Track Inventory
-* Monitor Dashboard Statistics
+A full-stack Inventory & Order Management System built using FastAPI, React, PostgreSQL, Docker, and deployed on Render & Vercel.
 
 ---
 
-## Technology Stack
+# Live Demo
 
-### Backend
+## Frontend
 
-* Python
+https://inventory-order-management-weld.vercel.app
+
+## Backend API
+
+https://inventory-order-management-i3ay.onrender.com
+
+## Swagger Documentation
+
+https://inventory-order-management-i3ay.onrender.com/docs
+
+## ReDoc Documentation
+
+https://inventory-order-management-i3ay.onrender.com/redoc
+
+---
+
+# Technology Stack
+
+## Backend
+
+* Python 3.11
 * FastAPI
 * SQLAlchemy
+* PostgreSQL
+* Pydantic
 
-### Frontend
+## Frontend
 
 * React
 * Vite
 * Axios
 
-### Database
-
-* PostgreSQL
-
-### Containerization
+## DevOps & Deployment
 
 * Docker
 * Docker Compose
-
-### Deployment
-
-* Render (Backend)
-* Vercel (Frontend)
+* Render
+* Vercel
+* GitHub
 
 ---
 
-## Features
+# Project Architecture
 
-### Product Management
+```text
+React Frontend
+      |
+      v
+FastAPI Backend
+      |
+      v
+PostgreSQL Database
+```
+
+---
+
+# Features
+
+## Product Management
 
 * Create Product
 * View Products
 * Update Product
 * Delete Product
 
-### Customer Management
+## Customer Management
 
 * Create Customer
 * View Customers
 * Update Customer
 * Delete Customer
 
-### Order Management
+## Order Management
 
 * Create Order
 * View Orders
 * Update Orders
 * Delete Orders
 
-### Dashboard
+## Dashboard
 
 Displays:
 
@@ -78,7 +98,7 @@ Displays:
 
 ---
 
-## Business Rules
+# Business Rules
 
 * Product SKU must be unique
 * Customer Email must be unique
@@ -89,39 +109,13 @@ Displays:
 
 ---
 
-## Project Structure
+# API Endpoints
 
-backend/
-frontend/
-docker-compose.yml
-
----
-
-## Local Setup
-
-### Clone Repository
-
-git clone <repository-url>
-
-### Start Application
-
-docker-compose up --build
-
-### Backend
-
-http://localhost:8000
-
-### Frontend
-
-http://localhost:5173
-
----
-
-## API Endpoints
-
-### Products
+## Products
 
 GET /products
+
+GET /products/{id}
 
 POST /products
 
@@ -129,9 +123,13 @@ PUT /products/{id}
 
 DELETE /products/{id}
 
-### Customers
+---
+
+## Customers
 
 GET /customers
+
+GET /customers/{id}
 
 POST /customers
 
@@ -139,9 +137,13 @@ PUT /customers/{id}
 
 DELETE /customers/{id}
 
-### Orders
+---
+
+## Orders
 
 GET /orders
+
+GET /orders/{id}
 
 POST /orders
 
@@ -149,25 +151,84 @@ PUT /orders/{id}
 
 DELETE /orders/{id}
 
-### Dashboard
+---
+
+## Dashboard
 
 GET /dashboard
 
 ---
 
-## Deployment
+# Docker Setup
 
-### Frontend
+## Clone Repository
+
+```bash
+git clone https://github.com/Cbhushan502/inventory-order-management.git
+
+cd inventory-order-management
+```
+
+## Run With Docker
+
+```bash
+docker-compose up --build
+```
+
+---
+
+# Local URLs
+
+## Frontend
+
+http://localhost:5173
+
+## Backend
+
+http://localhost:8000
+
+## Swagger Docs
+
+http://localhost:8000/docs
+
+## ReDoc
+
+http://localhost:8000/redoc
+
+---
+
+# Environment Variables
+
+## Frontend (.env)
+
+```env
+VITE_API_URL=https://inventory-order-management-i3ay.onrender.com
+```
+
+---
+
+# Docker Services
+
+* frontend
+* backend
+* postgres
+
+---
+
+# Deployment
+
+## Frontend (Vercel)
 
 https://inventory-order-management-weld.vercel.app
 
-### Backend
+## Backend (Render)
 
 https://inventory-order-management-i3ay.onrender.com
 
 ---
 
-## Author
+# Author
 
 Chandra Bhushan Saran
+
 Software Engineer
