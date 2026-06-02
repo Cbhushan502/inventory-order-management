@@ -12,7 +12,7 @@ router = APIRouter(
 )
 
 
-@@router.get("/")
+@router.get("/")
 def dashboard_summary(db: Session = Depends(get_db)):
     products = db.query(Product).all()
     customers = db.query(Customer).all()
