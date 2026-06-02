@@ -24,16 +24,11 @@ app = FastAPI(
 )
 
 # CORS Configuration
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-
-        "https://inventory-order-management-weld.vercel.app",
-        "https://inventory-order-management-1mhyhpcga.vercel.app",
-    ],
-    allow_credentials=True,
+    allow_origins=["*"],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
