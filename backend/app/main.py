@@ -29,7 +29,9 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:5173",
         "http://127.0.0.1:5173",
+
         "https://inventory-order-management-weld.vercel.app",
+        "https://inventory-order-management-1mhyhpcga.vercel.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
