@@ -1,112 +1,117 @@
-# Inventory Order Management System
+# Inventory & Order Management System
 
 ## Overview
 
-A full-stack Inventory Management System built using FastAPI, React, PostgreSQL, Docker, and SQLAlchemy.
+A full-stack Inventory & Order Management System built using FastAPI, React, PostgreSQL, Docker, and Docker Compose.
 
-The application allows users to manage products, customers, and orders while tracking inventory stock and dashboard statistics.
+The application allows businesses to:
+
+* Manage Products
+* Manage Customers
+* Create and Track Orders
+* Track Inventory
+* Monitor Dashboard Statistics
+
+---
+
+## Technology Stack
+
+### Backend
+
+* Python
+* FastAPI
+* SQLAlchemy
+
+### Frontend
+
+* React
+* Vite
+* Axios
+
+### Database
+
+* PostgreSQL
+
+### Containerization
+
+* Docker
+* Docker Compose
+
+### Deployment
+
+* Render (Backend)
+* Vercel (Frontend)
 
 ---
 
 ## Features
 
-### Products
+### Product Management
 
 * Create Product
 * View Products
 * Update Product
 * Delete Product
 
-### Customers
+### Customer Management
 
 * Create Customer
 * View Customers
 * Update Customer
 * Delete Customer
 
-### Orders
+### Order Management
 
-* Create Orders
+* Create Order
 * View Orders
 * Update Orders
 * Delete Orders
 
 ### Dashboard
 
+Displays:
+
 * Total Products
 * Total Customers
 * Total Orders
 * Low Stock Products
 
-### Business Logic
+---
 
-* Automatic order total calculation
-* Stock deduction when orders are created
-* SKU validation
-* Email validation
+## Business Rules
+
+* Product SKU must be unique
+* Customer Email must be unique
+* Product quantity cannot be negative
+* Orders cannot exceed available stock
+* Stock automatically decreases after order creation
+* Order total amount is automatically calculated
 
 ---
 
-## Tech Stack
+## Project Structure
 
-Backend:
-
-* FastAPI
-* SQLAlchemy
-* PostgreSQL
-
-Frontend:
-
-* React
-* Axios
-* Vite
-
-Containerization:
-
-* Docker
-* Docker Compose
+backend/
+frontend/
+docker-compose.yml
 
 ---
 
-## Installation
+## Local Setup
+
+### Clone Repository
+
+git clone <repository-url>
+
+### Start Application
+
+docker-compose up --build
 
 ### Backend
 
-```bash
-cd backend
-
-python -m venv venv
-
-source venv/bin/activate
-
-pip install -r requirements.txt
-
-uvicorn app.main:app --reload
-```
+http://localhost:8000
 
 ### Frontend
-
-```bash
-cd frontend
-
-npm install
-
-npm run dev
-```
-
----
-
-## Docker Setup
-
-```bash
-docker compose up --build
-```
-
-Backend:
-
-http://localhost:8000/docs
-
-Frontend:
 
 http://localhost:5173
 
@@ -150,6 +155,19 @@ GET /dashboard
 
 ---
 
+## Deployment
+
+### Frontend
+
+https://inventory-order-management-weld.vercel.app
+
+### Backend
+
+https://inventory-order-management-i3ay.onrender.com
+
+---
+
 ## Author
 
 Chandra Bhushan Saran
+Software Engineer
