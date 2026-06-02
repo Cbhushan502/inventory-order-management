@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../services/api";
 
 function Products() {
   const [products, setProducts] = useState([]);
-
   const [editingId, setEditingId] = useState(null);
 
   const [formData, setFormData] = useState({
@@ -19,10 +18,7 @@ function Products() {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get(
-        "http://127.0.0.1:8000/products/"
-      );
-
+      const response = await api.get("/products/");
       setProducts(response.data);
     } catch (error) {
       console.error(error);
@@ -41,27 +37,21 @@ function Products() {
 
     try {
       if (editingId) {
-        await axios.put(
-          `http://127.0.0.1:8000/products/${editingId}`,
-          {
-            name: formData.name,
-            sku: formData.sku,
-            price: Number(formData.price),
-            stock: Number(formData.stock),
-          }
-        );
+        await api.put(`/products/${editingId}`, {
+          name: formData.name,
+          sku: formData.sku,
+          price: Number(formData.price),
+          stock: Number(formData.stock),
+        });
 
         setEditingId(null);
       } else {
-        await axios.post(
-          "http://127.0.0.1:8000/products/",
-          {
-            name: formData.name,
-            sku: formData.sku,
-            price: Number(formData.price),
-            stock: Number(formData.stock),
-          }
-        );
+        await api.post("/products/", {
+          name: formData.name,
+          sku: formData.sku,
+          price: Number(formData.price),
+          stock: Number(formData.stock),
+        });
       }
 
       setFormData({
@@ -80,10 +70,7 @@ function Products() {
 
   const deleteProduct = async (id) => {
     try {
-      await axios.delete(
-        `http://127.0.0.1:8000/products/${id}`
-      );
-
+      await api.delete(`/products/${id}`);
       fetchProducts();
     } catch (error) {
       console.error(error);
@@ -153,18 +140,14 @@ function Products() {
         <button
           type="submit"
           style={{
-            backgroundColor: editingId
-              ? "orange"
-              : "green",
+            backgroundColor: editingId ? "orange" : "green",
             color: "white",
             border: "none",
             padding: "10px 20px",
             cursor: "pointer",
           }}
         >
-          {editingId
-            ? "Update Product"
-            : "Add Product"}
+          {editingId ? "Update Product" : "Add Product"}
         </button>
       </form>
 
@@ -198,9 +181,7 @@ function Products() {
 
               <td>
                 <button
-                  onClick={() =>
-                    editProduct(product)
-                  }
+                  onClick={() => editProduct(product)}
                   style={{
                     backgroundColor: "orange",
                     color: "white",
@@ -214,9 +195,7 @@ function Products() {
                 </button>
 
                 <button
-                  onClick={() =>
-                    deleteProduct(product.id)
-                  }
+                  onClick={() => deleteProduct(product.id)}
                   style={{
                     backgroundColor: "red",
                     color: "white",

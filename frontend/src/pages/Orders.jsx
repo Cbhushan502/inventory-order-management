@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../services/api";
 
 function Orders() {
   const [orders, setOrders] = useState([]);
@@ -12,10 +12,7 @@ function Orders() {
 
   const fetchOrders = async () => {
     try {
-      const response = await axios.get(
-        "http://127.0.0.1:8000/orders/"
-      );
-
+      const response = await api.get("/orders/");
       setOrders(response.data);
     } catch (error) {
       console.error(error);
@@ -42,13 +39,13 @@ function Orders() {
       };
 
       if (editingId) {
-        await axios.put(
-          `http://127.0.0.1:8000/orders/${editingId}`,
+        await api.put(
+          `/orders/${editingId}`,
           orderData
         );
       } else {
-        await axios.post(
-          "http://127.0.0.1:8000/orders/",
+        await api.post(
+          "/orders/",
           orderData
         );
       }
@@ -74,10 +71,7 @@ function Orders() {
 
   const deleteOrder = async (id) => {
     try {
-      await axios.delete(
-        `http://127.0.0.1:8000/orders/${id}`
-      );
-
+      await api.delete(`/orders/${id}`);
       fetchOrders();
     } catch (error) {
       console.error(error);

@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../services/api";
 
 function Customers() {
   const [customers, setCustomers] = useState([]);
-
   const [editingId, setEditingId] = useState(null);
 
   const [formData, setFormData] = useState({
@@ -14,10 +13,7 @@ function Customers() {
 
   const fetchCustomers = async () => {
     try {
-      const response = await axios.get(
-        "http://127.0.0.1:8000/customers/"
-      );
-
+      const response = await api.get("/customers/");
       setCustomers(response.data);
     } catch (error) {
       console.error(error);
@@ -37,10 +33,7 @@ function Customers() {
 
   const handleAdd = async () => {
     try {
-      await axios.post(
-        "http://127.0.0.1:8000/customers/",
-        formData
-      );
+      await api.post("/customers/", formData);
 
       fetchCustomers();
 
@@ -66,8 +59,8 @@ function Customers() {
 
   const handleUpdate = async () => {
     try {
-      await axios.put(
-        `http://127.0.0.1:8000/customers/${editingId}`,
+      await api.put(
+        `/customers/${editingId}`,
         formData
       );
 
@@ -87,9 +80,7 @@ function Customers() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(
-        `http://127.0.0.1:8000/customers/${id}`
-      );
+      await api.delete(`/customers/${id}`);
 
       fetchCustomers();
     } catch (error) {

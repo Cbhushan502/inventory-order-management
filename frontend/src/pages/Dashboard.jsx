@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../services/api";
 import DashboardCard from "../components/DashboardCard";
 
 function Dashboard() {
@@ -11,8 +11,8 @@ function Dashboard() {
   });
 
   useEffect(() => {
-    axios
-      .get("http://127.0.0.1:8000/dashboard/")
+    api
+      .get("/dashboard/")
       .then((response) => {
         setData(response.data);
       })
