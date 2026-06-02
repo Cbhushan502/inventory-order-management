@@ -12,16 +12,16 @@ router = APIRouter(
 )
 
 
-@router.get("/")
+@@router.get("/")
 def dashboard_summary(db: Session = Depends(get_db)):
-    products = db.query(Product).count()
-    customers = db.query(Customer).count()
-    orders = db.query(Order).count()
+    products = db.query(Product).all()
+    customers = db.query(Customer).all()
+    orders = db.query(Order).all()
 
     return {
-        "debug": "new_version",
-        "total_products": products,
-        "total_customers": customers,
-        "total_orders": orders,
-        "low_stock_products": db.query(Product).filter(Product.stock < 10).count()
+        "product_count": len(products),
+        "customer_count": len(customers),
+        "order_count": len(orders),
+        "products": [p.name for p in products],
+        "customers": [c.name for c in customers]
     }
